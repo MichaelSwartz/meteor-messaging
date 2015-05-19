@@ -1,0 +1,75 @@
+<head>
+  <title>Messaging</title>
+</head>
+
+<body>
+  <div class="container">
+    {{> loginButtons}}
+
+    <div class="chats">
+      {{#if currentUser}}
+        <form class="form new-chat">
+          <input type="text" name="text" placeholder="Create new chat here">
+        </form>
+      {{/if}}
+
+      <ul>
+        {{#each chats}}
+          {{> chat}}
+        {{/each}}
+      </ul>
+    </div>
+
+    <div class="messages">
+      {{#if currentUser}}
+        <form class="form new-message">
+          <input type="text" name="text" placeholder="Click here to type messages!" />
+        </form>
+      {{else}}
+        <div class="note">
+          Sign in to create chats and write messages
+        </div>
+      {{/if}}
+
+      <ul>
+        {{#each messages}}
+          <span class="text">
+            <strong>{{username}}</strong> -
+            {{fromNow createdAt}}
+            {{> message}}
+          </span>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</body>
+
+<template name="message">
+  <li>
+    <button class="delete">&times;</button>
+
+    <span class="text">{{text}}</span>
+  </li>
+</template>
+
+<template name="chat">
+  <li class="chat {{selected}}">
+    <span>{{name}}</span>
+  </li>
+</template>
+
+<template name="chatList">
+  <ul class="chatList">
+    {{#each chats}}
+      <li>
+        {{> chat}}
+      </li>
+    {{/each}}
+  </ul>
+
+  {{#if selectedChat}}
+    <div class="name">{{selectedChat}}</div>
+  {{else}}
+    <div class="note">Click a player to select</div>
+  {{/if}}
+</template>
