@@ -1,3 +1,4 @@
-My first attempt at making an app with Meteor and React (React to come soon).
+My first attempt at making an app with Meteor available at messaging.meteor.com
 
-Available at messaging.meteor.com
+Spun off of this: https://github.com/MichaelSwartz/messaging before attempting
+to add React.
